@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="data"
+            type="String" />
+
+    </data>
+
+    <LinearLayout
+        android:paddingBottom="2dp"
+        android:paddingStart="2dp"
+        android:paddingEnd="2dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/textView"
+            android:textSize="30sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorAccent"
+            android:gravity="center"
+            android:text="@{data}"
+            tools:text="Content" />
+    </LinearLayout>
+
+
+</layout>

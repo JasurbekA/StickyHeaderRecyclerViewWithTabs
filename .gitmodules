@@ -1,0 +1,3 @@
+[submodule "app/src/main/java/headerGist"]
+	path = headeritemdecorator/src/main/java/com/filipkowicz/headeritemdecorator/headerGist
+	url = https://gist.github.com/1a769001fae407b8813ab4387c42fcbd.git
