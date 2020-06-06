@@ -1,4 +1,4 @@
-package com.filipkowicz.examples.ui.util
+package com.filipkowicz.examples.util
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
@@ -9,10 +9,10 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.filipkowicz.examples.BR
 import com.filipkowicz.examples.R
+import com.filipkowicz.examples.data.Data
+import com.filipkowicz.examples.data.ListItem
 import com.filipkowicz.examples.databinding.HeaderLayoutBinding
 import com.filipkowicz.examples.databinding.ItemLayoutBinding
-import com.filipkowicz.examples.ui.data.ListItem
-import com.filipkowicz.examples.ui.main.MainViewModel
 import java.util.*
 
 class Adapter
@@ -53,13 +53,13 @@ class Adapter
         return getItem(position).itemType
     }
 
-    public override fun getItem(position: Int): MainViewModel.Data {
-        return currentList[position] as MainViewModel.Data
+    public override fun getItem(position: Int): Data {
+        return currentList[position] as Data
     }
 
     fun calculateScrollPosition(headerText: String): Int {
         currentList.forEachIndexed { index, listItem ->
-            if ((listItem as MainViewModel.Data).data.toLowerCase(Locale.ROOT)
+            if ((listItem as Data).data.toLowerCase(Locale.ROOT)
                     .startsWith(headerText.toLowerCase(Locale.ROOT))) return index
         }
         return 0
@@ -69,7 +69,7 @@ class Adapter
 class DataBindingViewHolder(private val binding: ViewDataBinding) :
     RecyclerView.ViewHolder(binding.root) {
 
-    fun bind(item: MainViewModel.Data) {
+    fun bind(item: Data) {
         binding.setVariable(BR.data, item.data)
         binding.executePendingBindings()
     }

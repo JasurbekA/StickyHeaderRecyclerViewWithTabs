@@ -1,4 +1,4 @@
-package com.filipkowicz.examples.ui.util
+package com.filipkowicz.examples.util
 
 /*
 solution based on - based on Sevastyan answer on StackOverflow
@@ -116,6 +116,7 @@ class HeaderItemDecoration(
                     (((nextHeader.top - paddingTop) / nextHeader.height.toFloat()) * 255).toInt()
                 )
             } else {
+                @Suppress("DEPRECATION")
                 c.saveLayerAlpha(
                     0f, 0f, c.width.toFloat(), c.height.toFloat(),
                     (((nextHeader.top - paddingTop) / nextHeader.height.toFloat()) * 255).toInt(),

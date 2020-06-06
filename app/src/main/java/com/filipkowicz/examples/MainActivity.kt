@@ -1,9 +1,8 @@
 package com.filipkowicz.examples
 
 import android.os.Bundle
-import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
-import com.filipkowicz.examples.ui.main.MainFragment
+import com.filipkowicz.examples.main.MainFragment
 
 class MainActivity : AppCompatActivity() {
 

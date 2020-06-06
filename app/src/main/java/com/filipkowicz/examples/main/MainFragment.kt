@@ -1,4 +1,4 @@
-package com.filipkowicz.examples.ui.main
+package com.filipkowicz.examples.main
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,8 +10,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.filipkowicz.examples.R
-import com.filipkowicz.examples.ui.util.Adapter
-import com.filipkowicz.examples.ui.util.HeaderItemDecoration
+import com.filipkowicz.examples.util.Adapter
+import com.filipkowicz.examples.util.HeaderItemDecoration
 import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.main_fragment.*
 
@@ -36,7 +36,6 @@ class MainFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initTabLayout()
         setupRecyclerView()
-
     }
 
     private fun setupRecyclerView() {
@@ -61,7 +60,10 @@ class MainFragment : Fragment() {
                 super.onScrolled(recyclerView, dx, dy)
                 val position =
                     (recyclerView.layoutManager as LinearLayoutManager).findFirstVisibleItemPosition() + 1
-
+                /*
+                Here is the simple logic, you should implement your own logic here to correctly enable
+                syncing tabs with RecyclerView
+                */
                 when {
                     adapter.getItem(position).data.endsWith("30") ||
                             adapter.getItem(position).data.endsWith("31") ||
@@ -78,7 +80,6 @@ class MainFragment : Fragment() {
     }
 
     private fun selectTheTab(index: Int) {
-
         tabLayout.getTabAt(index)?.select()
     }
 
@@ -107,7 +108,7 @@ class MainFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
 
-        viewModel.items.observe(viewLifecycleOwner, Observer {
+        viewModel.sampleInput.observe(viewLifecycleOwner, Observer {
             adapter.submitList(it)
         })
 
