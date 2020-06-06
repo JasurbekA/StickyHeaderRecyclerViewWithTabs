@@ -1,5 +1,5 @@
 ## Sticky header with tab syncing
-A little info about your project and/ or overview that explains **what** the project is about.
+Shows how to implement syncing Tab with RecyclerView where RecyclerView items are the same with Tab items (group) 
 
 ## Motivation
 RecyclerView is everywhere in Android and sometimes you need stiky header for your RecyclerView (ex: Contact list) where you group elements such that same type of elements shown in specified category and group name (header) should be visible while you are in the group. And syncing tabs with specied group is also there.
