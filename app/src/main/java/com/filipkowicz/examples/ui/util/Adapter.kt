@@ -1,4 +1,4 @@
-package com.filipkowicz.examples.ui.main
+package com.filipkowicz.examples.ui.util
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
@@ -11,6 +11,8 @@ import com.filipkowicz.examples.BR
 import com.filipkowicz.examples.R
 import com.filipkowicz.examples.databinding.HeaderLayoutBinding
 import com.filipkowicz.examples.databinding.ItemLayoutBinding
+import com.filipkowicz.examples.ui.data.ListItem
+import com.filipkowicz.examples.ui.main.MainViewModel
 import java.util.*
 
 class Adapter
@@ -58,7 +60,7 @@ class Adapter
     fun calculateScrollPosition(headerText: String): Int {
         currentList.forEachIndexed { index, listItem ->
             if ((listItem as MainViewModel.Data).data.toLowerCase(Locale.ROOT)
-                == headerText.toLowerCase(Locale.ROOT)) return index
+                    .startsWith(headerText.toLowerCase(Locale.ROOT))) return index
         }
         return 0
     }

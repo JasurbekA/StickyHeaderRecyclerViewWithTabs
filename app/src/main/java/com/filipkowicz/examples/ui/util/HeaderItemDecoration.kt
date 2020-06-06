@@ -1,4 +1,4 @@
-package com.filipkowicz.examples.ui.main
+package com.filipkowicz.examples.ui.util
 
 /*
 solution based on - based on Sevastyan answer on StackOverflow

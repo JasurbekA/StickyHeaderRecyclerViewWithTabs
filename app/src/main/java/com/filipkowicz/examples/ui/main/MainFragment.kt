@@ -10,6 +10,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.filipkowicz.examples.R
+import com.filipkowicz.examples.ui.util.Adapter
+import com.filipkowicz.examples.ui.util.HeaderItemDecoration
 import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.main_fragment.*
 
@@ -33,11 +35,20 @@ class MainFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initTabLayout()
+        setupRecyclerView()
+
+    }
+
+    private fun setupRecyclerView() {
         recycler.apply {
+            layoutManager = LinearLayoutManager(context)
             adapter = this@MainFragment.adapter
-            addItemDecoration(HeaderItemDecoration(this) { position ->
-                this@MainFragment.adapter.getItemViewType(position) == R.layout.header_layout
-            })
+            addItemDecoration(
+                HeaderItemDecoration(
+                    this
+                ) { position ->
+                    this@MainFragment.adapter.getItemViewType(position) == R.layout.header_layout
+                })
         }
 
         recycler.addOnScrollListener(object : RecyclerView.OnScrollListener() {
@@ -52,10 +63,14 @@ class MainFragment : Fragment() {
                     (recyclerView.layoutManager as LinearLayoutManager).findFirstVisibleItemPosition() + 1
 
                 when {
+                    adapter.getItem(position).data.endsWith("30") ||
+                            adapter.getItem(position).data.endsWith("31") ||
+                            adapter.getItem(position).data.endsWith("32")
+                    -> selectTheTab(3)
+                    adapter.getItem(position).data.endsWith("10") ||
+                            adapter.getItem(position).data.endsWith("11") -> selectTheTab(1)
                     adapter.getItem(position).data.endsWith("0") -> selectTheTab(0)
-                    adapter.getItem(position).data.endsWith("1") -> selectTheTab(1)
                     adapter.getItem(position).data.endsWith("2") -> selectTheTab(2)
-                    adapter.getItem(position).data.endsWith("3") -> selectTheTab(3)
                     else -> selectTheTab(4)
                 }
             }
@@ -63,6 +78,7 @@ class MainFragment : Fragment() {
     }
 
     private fun selectTheTab(index: Int) {
+
         tabLayout.getTabAt(index)?.select()
     }
 
